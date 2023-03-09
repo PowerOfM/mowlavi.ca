@@ -10,6 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.0.18"
+    "astro": "^2.0.18",
+    "bulma": "^0.9.4"
+  },
+  "devDependencies": {
+    "sass": "^1.58.3"
   }
 }

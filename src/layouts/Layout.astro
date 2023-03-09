@@ -1,6 +1,6 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,28 +8,51 @@ const { title } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+
+<style lang="scss" is:global>
+  // Import a Google Font
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:ital,wght@1,500&display=swap");
+
+  // Set your brand colors
+  $purple: #8a4d76;
+  $pink: #fa7c91;
+  $brown: #757763;
+  $beige-light: #d0d1cd;
+  $beige-lighter: #eff0eb;
+
+  // Update Bulma's global variables
+  $family-sans-serif: "Inter", sans-serif;
+  $grey-dark: $brown;
+  $grey-light: $beige-light;
+  $primary: $purple;
+  $link: $pink;
+  $widescreen-enabled: false;
+  $fullhd-enabled: false;
+
+  // Update some of Bulma's component variables
+  $body-background-color: $beige-lighter;
+  $control-border-width: 2px;
+  $input-border-color: transparent;
+  $input-shadow: none;
+
+  // Import only what you need from Bulma
+  @import "bulma/sass/utilities/_all.sass";
+  @import "bulma/sass/base/_all.sass";
+  @import "bulma/sass/elements/button.sass";
+  @import "bulma/sass/elements/container.sass";
+  @import "bulma/sass/elements/title.sass";
+  @import "bulma/sass/form/_all.sass";
+  @import "bulma/sass/components/navbar.sass";
+  @import "bulma/sass/layout/hero.sass";
+  @import "bulma/sass/layout/section.sass";
 </style>
