@@ -1,51 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import AppNav from "../components/AppNav.astro";
-import noiseTexture from "../assets/noise-texture.png";
+import Coverpage from "../components/Coverpage.astro";
 ---
 
 <Layout title="Mesbah Mowlavi Profile">
   <AppNav />
 
-  <section class="hero is-fullheight front-page">
-    <div class="segment">
-      <span>Engineer</span>
-    </div>
-    <div class="segment">
-      <span>Designer</span>
-    </div>
-    <div class="segment">
-      <span>Creator</span>
-    </div>
-  </section>
+  <Coverpage />
+  <section class="hero is-fullheight">About me</section>
 </Layout>
-
-<style lang="scss">
-  $offwhite: #f3efe0;
-
-  .hero.front-page {
-    &::before {
-      content: " ";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url("/img/noise-texture.png");
-      mix-blend-mode: overlay;
-      opacity: 0.25;
-    }
-    background: linear-gradient(315deg, #c0007f 0%, #3c4ca0 55%, #2f84c1 100%);
-    color: $offwhite;
-
-    .segment {
-      flex: 1;
-      @include mobile {
-        background: pink;
-      }
-      @include tablet {
-        border-bottom: 1px solid $offwhite;
-      }
-    }
-  }
-</style>

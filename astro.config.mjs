@@ -9,7 +9,7 @@ export default defineConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "bulma/sass/utilities/_all.sass";`,
+          // additionalData: `@import "bulma/sass/utilities/_all.sass";`,
         },
       },
     },

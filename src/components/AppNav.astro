@@ -17,8 +17,25 @@
 </nav>
 
 <style lang="scss">
+  @import "../styles/theme";
   .navbar {
-    height: 135px;
+    display: flex;
+    padding: 0 0.5rem;
     background: transparent;
+    border-bottom: 1px solid $white;
+
+    .navbar-brand {
+      flex: 1;
+
+      .navbar-item {
+        padding: 0;
+        font-size: 38px;
+        color: $white;
+      }
+    }
+    @include tablet {
+      height: 12.5vh;
+      padding: 0 2.5rem;
+    }
   }
 </style>

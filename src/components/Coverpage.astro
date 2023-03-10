@@ -1,0 +1,226 @@
+<section class="hero is-fullheight coverpage vertical">
+  <div class="segment">Engineer</div>
+  <div class="gutter">COMPUTER ENGINEERING // SYSTEM ARCHITECTURE</div>
+
+  <div class="segment right">Designer</div>
+  <div class="gutter">USER INTERFACES // USER EXPERIENCE // BRANDING</div>
+
+  <div class="segment creator">Creator</div>
+  <div class="gutter">ART // MUSIC // VIDEO</div>
+
+  <div class="dots" role="presentation">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <img class="selfie" src="/img/me.png" />
+  <img class="selfie me2" src="/img/me2.png" />
+  <img class="selfie me3" src="/img/me3.png" />
+</section>
+
+<style lang="scss">
+  @import "../styles/animations.sass";
+  @import "../styles/theme.sass";
+
+  .hero.coverpage {
+    // Noise texture overlay
+    &::before {
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("/img/noise-texture.png");
+      mix-blend-mode: overlay;
+      opacity: 0.25;
+    }
+
+    position: relative;
+    background: linear-gradient(315deg, #c0007f 0%, #3c4ca0 55%, #2f84c1 100%);
+    color: $white;
+    overflow: hidden;
+
+    .segment {
+      text-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+      z-index: 1;
+      animation: slidein-right 1.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s
+        both;
+    }
+    .segment.right {
+      text-align: right;
+      animation: slidein-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+    }
+    .segment.creator {
+      animation: slidein-right 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.75s
+        both;
+      text-align: center;
+      font-family: $family-serif;
+      font-style: italic;
+      background: linear-gradient(
+        259.87deg,
+        #57c4c4 14.48%,
+        #a783f2 45.94%,
+        #f28383 84.75%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      text-shadow: none;
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.25));
+    }
+    .gutter {
+      animation: tracking-in-expand 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+        0.5s both;
+      font-size: 0;
+      height: 0;
+      width: 0;
+    }
+    .selfie {
+      animation: smallslide-left 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.85s
+        both;
+      border-radius: 8rem;
+      position: absolute;
+      &.me2,
+      &.me3 {
+        display: none;
+        z-index: 2;
+      }
+    }
+    .dots {
+      display: none;
+      height: 12.5vh;
+      position: relative;
+      div {
+        position: absolute;
+        top: 3.125vh;
+        left: -6.25vh;
+        width: 6.25vh;
+        height: 6.25vh;
+        border: 1px solid $white;
+        border-radius: 100%;
+        animation-name: slide;
+        animation-iteration-count: infinite;
+        animation-delay: 2s;
+        @for $i from 1 through 7 {
+          &:nth-child(#{$i}) {
+            animation-duration: #{7 + $i}s;
+          }
+        }
+      }
+      @keyframes slide {
+        0% {
+          left: 3.125vh;
+        }
+        50% {
+          left: calc(100vw - 9.375vh);
+        }
+        100% {
+          left: 3.125vh;
+        }
+      }
+    }
+
+    // Vertical
+    @include mobile {
+      padding-top: 57px;
+      width: 100vw;
+      writing-mode: vertical-lr;
+      text-orientation: mixed;
+      .segment {
+        line-height: 33vw;
+        width: 33%;
+        font-size: min(25vw, 18vh);
+        font-weight: 500;
+        transform: rotate(180deg);
+        padding: 1rem 0;
+        animation: none !important;
+        &.right {
+          border-left: 1px solid $white;
+          border-right: 1px solid $white;
+        }
+        &.creator {
+        }
+      }
+      .selfie {
+        width: min(80vh, 70vw);
+        height: min(80vh, 70vw);
+        bottom: 0;
+        right: 5vw;
+        &.me3 {
+          display: block;
+        }
+      }
+    }
+
+    // Horizontal - Tablet
+    @include tablet {
+      padding-top: 12.5vh; // 1/8
+      .segment {
+        height: 25vh; // 1/4
+        line-height: 25vh;
+        font-size: min(25vh, 23vw); // ~80% height
+        font-weight: 500;
+        padding: 0 1%;
+      }
+      .gutter {
+        width: 100%;
+        border-top: 1px solid $white;
+      }
+
+      .selfie {
+        width: min(68vh, 80vw);
+        height: min(68vh, 80vw);
+        bottom: 12.5vh;
+        right: 0;
+        &.me2 {
+          display: block;
+        }
+      }
+      .dots {
+        display: flex;
+      }
+    }
+
+    // Horizontal - Desktop
+    @include desktop {
+      .segment {
+        height: calc(25vh - 22px);
+        line-height: calc(25vh - 22px);
+        font-size: min(21vh, 20vw); // ~80% height
+        border-top: none;
+        border-bottom: none;
+        // border-left: 7px solid $white;
+        padding-left: 3%;
+
+        &.right,
+        &.creator {
+          padding-right: 30%;
+        }
+      }
+      .gutter {
+        display: block;
+        height: 22px;
+        width: 100%;
+        padding: 0 5%;
+        font-size: 14px;
+        line-height: 22px;
+        border-top: 1px solid $white;
+        border-bottom: 1px solid $white;
+        font-family: $family-code;
+      }
+      .selfie {
+        width: 62.5vh;
+        height: 62.5vh;
+        bottom: 12.5vh;
+        right: 8%;
+      }
+    }
+  }
+</style>
