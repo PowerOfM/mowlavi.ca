@@ -1,4 +1,6 @@
 <section class="hero is-fullheight coverpage vertical">
+  <div class="top-line"></div>
+
   <div class="segment">Engineer</div>
   <div class="gutter">COMPUTER ENGINEERING // SYSTEM ARCHITECTURE</div>
 
@@ -41,24 +43,31 @@
       opacity: 0.25;
     }
 
+    $ease-in1: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    $ease-in2: cubic-bezier(0.66, 0.26, 0.32, 0.95);
+
     position: relative;
     background: linear-gradient(315deg, #c0007f 0%, #3c4ca0 55%, #2f84c1 100%);
     color: $white;
     overflow: hidden;
 
+    .top-line {
+      width: 100vw;
+      height: 0;
+      border-top: 1px solid $white;
+    }
+
     .segment {
-      text-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+      // text-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
       z-index: 1;
-      animation: slidein-right 1.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s
-        both;
+      animation: slidein-left 1.25s $ease-in1 0s both;
     }
     .segment.right {
       text-align: right;
-      animation: slidein-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+      animation: slidein-right 1s $ease-in1 0.5s both;
     }
     .segment.creator {
-      animation: slidein-right 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.75s
-        both;
+      animation: slidein-left 2s $ease-in1 0.75s both;
       text-align: center;
       font-family: $family-serif;
       font-style: italic;
@@ -72,19 +81,17 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-fill-color: transparent;
-      text-shadow: none;
-      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.25));
+      // text-shadow: none;
+      // filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.25));
     }
     .gutter {
-      animation: tracking-in-expand 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
-        0.5s both;
+      animation: tracking-in-expand 2s $ease-in2 1s both;
       font-size: 0;
       height: 0;
       width: 0;
     }
     .selfie {
-      animation: smallslide-left 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.85s
-        both;
+      animation: slide-right 2s $ease-in2 1s both;
       border-radius: 8rem;
       position: absolute;
       &.me2,
