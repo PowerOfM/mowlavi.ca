@@ -2,13 +2,33 @@
 import Layout from "../layouts/Layout.astro";
 import AppNav from "../components/AppNav.astro";
 import Coverpage from "../components/Coverpage.astro";
-import CoverMobile from "../components/CoverMobile.astro";
+import CoverpageMobile from "../components/CoverpageMobile.astro";
 ---
 
 <Layout title="Mesbah Mowlavi Profile">
   <AppNav />
 
-  <!-- <Coverpage /> -->
-  <CoverMobile />
+  <div class="mobile-only">
+    <CoverpageMobile />
+  </div>
+  <div class="tabletup-only">
+    <Coverpage />
+  </div>
   <section class="hero is-fullheight">About me</section>
 </Layout>
+
+<style lang="scss">
+  @import "../styles/theme.sass";
+
+  .tabletup-only {
+    display: none;
+  }
+  @include tablet {
+    .mobile-only {
+      display: none;
+    }
+    .tabletup-only {
+      display: block;
+    }
+  }
+</style>

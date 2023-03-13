@@ -1,0 +1,133 @@
+<section class="hero is-fullheight">
+  <div class="top-line"></div>
+
+  <div class="marquee engineer">
+    <div class="marquee-inner" aria-hidden="true">
+      <div>Engineer</div>
+      <div>Engineer</div>
+      <div>Engineer</div>
+      <div>Engineer</div>
+    </div>
+  </div>
+
+  <div class="marquee designer">
+    <div class="marquee-inner" aria-hidden="true">
+      <div>Designer</div>
+      <div>Designer</div>
+      <div>Designer</div>
+      <div>Designer</div>
+    </div>
+  </div>
+
+  <div class="marquee creator">
+    <div class="marquee-inner" aria-hidden="true">
+      <div>Creator</div>
+      <div>Creator</div>
+      <div>Creator</div>
+      <div>Creator</div>
+    </div>
+  </div>
+
+  <img class="selfie" src="/img/me.png" />
+  <img class="selfie me3" src="/img/me3.png" />
+</section>
+
+<style lang="scss">
+  @import "../styles/theme.sass";
+
+  .hero {
+    position: relative;
+    width: 100vw;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    padding-top: 57px;
+    background: linear-gradient(315deg, #a31e75 0%, #3b457b 55%, #2b936d 100%);
+  }
+  .top-line {
+    position: absolute;
+    margin-top: -1px;
+    border-top: 1px solid $white;
+    width: 100%;
+  }
+
+  .marquee {
+    position: relative;
+    overflow: hidden;
+    width: 33.3333%;
+    height: 100vh;
+    transform: rotate(180deg);
+    z-index: 1;
+
+    --font-size: 25vw;
+    --length: calc(3.5 * var(--font-size));
+
+    .marquee-inner {
+      position: relative;
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 10s linear infinite;
+
+      div {
+        color: $white;
+        text-align: center;
+        font-size: var(--font-size);
+        font-weight: 500;
+        line-height: 33vw;
+        min-height: var(--length);
+      }
+    }
+  }
+
+  .marquee.engineer {
+    --length: calc(4.5 * var(--font-size));
+    .marquee-inner {
+      animation-duration: 12s;
+    }
+  }
+  .marquee.designer {
+    --length: calc(4.5 * var(--font-size));
+    .marquee-inner {
+      animation-direction: reverse;
+    }
+  }
+  .marquee.creator {
+    --length: calc(3.75 * var(--font-size));
+    .marquee-inner {
+      div {
+        font-family: $family-serif;
+        font-style: italic;
+        background: linear-gradient(
+          259.87deg,
+          #57c4c4 14.48%,
+          #a783f2 45.94%,
+          #f28383 84.75%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+    }
+  }
+
+  img.selfie {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    &.me3 {
+      z-index: 2;
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(0, calc(-1 * var(--length)), 0);
+    }
+  }
+</style>

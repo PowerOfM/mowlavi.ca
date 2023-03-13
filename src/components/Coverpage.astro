@@ -22,7 +22,6 @@
 
   <img class="selfie" src="/img/me.png" />
   <img class="selfie me2" src="/img/me2.png" />
-  <img class="selfie me3" src="/img/me3.png" />
 </section>
 
 <style lang="scss">
@@ -30,24 +29,11 @@
   @import "../styles/theme.sass";
 
   .hero.coverpage {
-    // Noise texture overlay
-    &::before {
-      content: " ";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url("/img/noise-texture.png");
-      mix-blend-mode: overlay;
-      opacity: 0.25;
-    }
-
     $ease-in1: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     $ease-in2: cubic-bezier(0.66, 0.26, 0.32, 0.95);
 
     position: relative;
-    background: linear-gradient(315deg, #c0007f 0%, #3c4ca0 55%, #2f84c1 100%);
+    background: linear-gradient(315deg, #a31e75 0%, #3b457b 55%, #2b936d 100%);
     color: $white;
     overflow: hidden;
 
@@ -58,7 +44,11 @@
     }
 
     .segment {
-      // text-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+      height: 25vh; // 1/4
+      line-height: 25vh;
+      font-size: min(25vh, 23vw); // ~80% height
+      font-weight: 500;
+      padding: 0 1%;
       z-index: 1;
       animation: slidein-left 1.25s $ease-in1 0s both;
     }
@@ -81,27 +71,28 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-fill-color: transparent;
-      // text-shadow: none;
-      // filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.25));
     }
     .gutter {
       animation: tracking-in-expand 2s $ease-in2 1s both;
       font-size: 0;
       height: 0;
-      width: 0;
+      width: 100%;
+      border-top: 1px solid $white;
     }
     .selfie {
       animation: slide-right 2s $ease-in2 1s both;
       border-radius: 8rem;
       position: absolute;
-      &.me2,
-      &.me3 {
-        display: none;
+      width: min(68vh, 80vw);
+      height: min(68vh, 80vw);
+      bottom: 12.5vh;
+      right: 0;
+      &.me2 {
         z-index: 2;
       }
     }
     .dots {
-      display: none;
+      display: flex;
       height: 12.5vh;
       position: relative;
       div {
@@ -134,66 +125,7 @@
       }
     }
 
-    // Vertical
-    @include mobile {
-      padding-top: 57px;
-      width: 100vw;
-      writing-mode: vertical-lr;
-      text-orientation: mixed;
-      .segment {
-        line-height: 33vw;
-        width: 33%;
-        font-size: min(25vw, 18vh);
-        font-weight: 500;
-        transform: rotate(180deg);
-        padding: 1rem 0;
-        animation: none !important;
-        &.right {
-          border-left: 1px solid $white;
-          border-right: 1px solid $white;
-        }
-        &.creator {
-        }
-      }
-      .selfie {
-        width: min(80vh, 70vw);
-        height: min(80vh, 70vw);
-        bottom: 0;
-        right: 5vw;
-        &.me3 {
-          display: block;
-        }
-      }
-    }
-
-    // Horizontal - Tablet
-    @include tablet {
-      padding-top: 12.5vh; // 1/8
-      .segment {
-        height: 25vh; // 1/4
-        line-height: 25vh;
-        font-size: min(25vh, 23vw); // ~80% height
-        font-weight: 500;
-        padding: 0 1%;
-      }
-      .gutter {
-        width: 100%;
-        border-top: 1px solid $white;
-      }
-
-      .selfie {
-        width: min(68vh, 80vw);
-        height: min(68vh, 80vw);
-        bottom: 12.5vh;
-        right: 0;
-        &.me2 {
-          display: block;
-        }
-      }
-      .dots {
-        display: flex;
-      }
-    }
+    padding-top: 12.5vh; // 1/8
 
     // Horizontal - Desktop
     @include desktop {
@@ -227,6 +159,52 @@
         height: 62.5vh;
         bottom: 12.5vh;
         right: 8%;
+      }
+    }
+
+    // Noise texture overlay
+    &::before {
+      animation: grain 10s steps(10) infinite;
+      background-image: url("/img/noise-texture.png");
+      content: "";
+      height: 300%;
+      left: -50%;
+      opacity: 0.2;
+      position: fixed;
+      top: -100%;
+      width: 300%;
+    }
+    @keyframes grain {
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+      10% {
+        transform: translate(-5%, -10%);
+      }
+      20% {
+        transform: translate(-15%, 5%);
+      }
+      30% {
+        transform: translate(7%, -25%);
+      }
+      40% {
+        transform: translate(-5%, 25%);
+      }
+      50% {
+        transform: translate(-15%, 10%);
+      }
+      60% {
+        transform: translate(15%, 0%);
+      }
+      70% {
+        transform: translate(0%, 15%);
+      }
+      80% {
+        transform: translate(3%, 35%);
+      }
+      90% {
+        transform: translate(-10%, 10%);
       }
     }
   }
