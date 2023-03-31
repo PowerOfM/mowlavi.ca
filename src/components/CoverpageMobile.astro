@@ -1,4 +1,12 @@
-<section class="hero is-fullheight">
+---
+export interface Props {
+  class: string;
+}
+
+const props = Astro.props;
+---
+
+<section class={"hero is-fullheight " + props.class}>
   <div class="top-line"></div>
 
   <div class="marquee engineer">

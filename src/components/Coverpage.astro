@@ -1,4 +1,12 @@
-<section class="hero is-fullheight coverpage vertical">
+---
+export interface Props {
+  class: string;
+}
+
+const props = Astro.props;
+---
+
+<section class={"hero is-fullheight " + props.class}>
   <div class="top-line"></div>
 
   <div class="segment">Engineer</div>
@@ -28,7 +36,7 @@
   @import "../styles/animations.sass";
   @import "../styles/theme.sass";
 
-  .hero.coverpage {
+  .hero {
     $ease-in1: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     $ease-in2: cubic-bezier(0.66, 0.26, 0.32, 0.95);
 
@@ -170,7 +178,7 @@
       height: 300%;
       left: -50%;
       opacity: 0.2;
-      position: fixed;
+      position: absolute;
       top: -100%;
       width: 300%;
     }
