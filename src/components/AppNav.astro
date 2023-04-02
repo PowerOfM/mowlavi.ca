@@ -1,4 +1,4 @@
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+<nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/"> Mesbah.</a>
   </div>
@@ -7,18 +7,20 @@
 <style lang="scss">
   @import "../styles/theme";
   .navbar {
-    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 0 0.5rem;
-    background: transparent;
+    display: flex;
+    align-items: center;
+    z-index: 100;
 
-    .navbar-brand {
-      flex: 1;
-
-      .navbar-item {
-        padding: 0;
-        font-size: 38px;
-        color: $white;
-      }
+    .navbar-item {
+      padding: 0;
+      font-size: 38px;
+      color: $white;
+      text-decoration: none;
     }
     @include tablet {
       height: 12.5vh;

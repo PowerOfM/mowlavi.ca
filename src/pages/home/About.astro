@@ -1,0 +1,233 @@
+---
+const SKILLS = [
+  "Typescript",
+  "Node.js",
+  "Python",
+  "AWS",
+  "GCP",
+  "React",
+  "UI/UX Design",
+  "Figma",
+  "Java",
+  "Swift",
+  "GNU/Linux",
+  "MySQL",
+  "CI/CD",
+  "Stripe",
+];
+---
+
+<section class="hero is-fullheight about">
+  <div class="about-tag label vert tablet-up-block">ABOUT ME</div>
+  <div class="row">
+    <div class="segment hi-there">
+      <div class="circle"></div>
+      <h3>
+        Hi there, <br />I'm <span class="serif">
+          Mesbah <span class="label">/məsbɑ/</span>
+        </span>
+      </h3>
+    </div>
+    <div class="segment">
+      <p>
+        I’m a Computer Engineer with 5+ years of experience in software
+        development, creative thinking, and product leadership. I have a strong
+        passion for creating responsive systems and engaging interfaces that
+        help make the world a better place.
+      </p>
+    </div>
+  </div>
+  <div class="row footer">
+    <div class="segment tablet-up-flex">Tools & Tech</div>
+    <div class="segment right">Vancouver // BC // Canada</div>
+  </div>
+
+  <div class="skills">
+    <div class="skills-inner">
+      {SKILLS.map((skill) => <div class="label">{skill}</div>)}
+      {SKILLS.map((skill) => <div class="label">{skill}</div>)}
+    </div>
+  </div>
+</section>
+
+<style lang="scss" define:vars={{ numSkills: -SKILLS.length }}>
+  @import "../../styles/theme.sass";
+
+  .hero.about {
+    color: $white;
+    border-top: 1px solid $white;
+    position: relative;
+
+    .about-tag {
+      position: absolute;
+      top: 50px;
+      left: 14px;
+    }
+  }
+  .row {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+  .row.footer {
+    max-height: 48px;
+    line-height: 48px;
+    .segment {
+      display: block;
+      padding: 0 15px;
+      font-family: $family-code;
+      font-size: 14px;
+      &.right {
+        text-align: right;
+      }
+    }
+  }
+  .segment {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    border-bottom: 1px solid $white;
+    position: relative;
+    p {
+      width: 70%;
+      font-size: 24px;
+      line-height: 1.485;
+      margin: 15% 0;
+    }
+  }
+  .segment.hi-there {
+    min-height: 50vh;
+    @include tablet {
+      height: auto;
+    }
+
+    h3 {
+      margin: 20px;
+      font-weight: 500;
+      font-size: 25vw;
+      line-height: 1.1;
+      @include tablet {
+        font-size: 96px;
+      }
+    }
+    .serif {
+      position: relative;
+      color: $cyan;
+      .label {
+        position: absolute;
+        right: 20px;
+        bottom: -10px;
+      }
+    }
+    .circle {
+      width: 25vw;
+      height: 25vw;
+      border-radius: 50%;
+      border: 1px solid $white;
+      position: absolute;
+      animation: moveX 2s linear 0s infinite alternate,
+        moveY 3.4s linear 0s infinite alternate;
+    }
+
+    @keyframes moveX {
+      from {
+        left: 0;
+      }
+      to {
+        left: 75vw;
+      }
+    }
+
+    @keyframes moveY {
+      from {
+        top: 0;
+      }
+      to {
+        top: calc(50vh - 25vw);
+      }
+    }
+    @include tablet {
+      @keyframes moveX {
+        from {
+          left: 0;
+        }
+        to {
+          left: 25vw;
+        }
+      }
+      @keyframes moveY {
+        from {
+          top: 0;
+        }
+        to {
+          top: calc(100vh - 25vw - 294px);
+        }
+      }
+    }
+  }
+
+  @include tablet {
+    .segment + .segment {
+      border-left: 1px solid $white;
+    }
+  }
+
+  .skills {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 246px;
+    z-index: 1;
+
+    .skills-inner {
+      position: relative;
+      display: flex;
+      white-space: nowrap;
+      animation: skills_marquee 25s linear infinite;
+
+      div {
+        position: relative;
+        box-sizing: border-box;
+        width: 100px;
+        line-height: 100px;
+        height: 246px;
+        writing-mode: vertical-lr;
+        text-orientation: mixed;
+        transform: rotate(180deg);
+        border: 1px solid $white;
+        margin: -1px 0 0 -1px;
+        text-align: center;
+        &::before {
+          content: "";
+          position: absolute;
+          background: #2c3358;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 0;
+          transition: height 500ms;
+          z-index: -1;
+        }
+        &:hover::before {
+          height: 100%;
+        }
+      }
+    }
+
+    @keyframes skills_marquee {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(calc(100px * var(--numSkills)), 0, 0);
+      }
+    }
+  }
+</style>

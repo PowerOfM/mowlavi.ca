@@ -1,232 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import AppNav from "../components/AppNav.astro";
-import Coverpage from "../components/Coverpage.astro";
-import CoverpageMobile from "../components/CoverpageMobile.astro";
-
-const SKILLS = [
-  "Typescript",
-  "Node.js",
-  "Python",
-  "AWS",
-  "GCP",
-  "React",
-  "UI/UX Design",
-  "Figma",
-  "Java",
-  "Swift",
-  "GNU/Linux",
-  "MySQL",
-  "CI/CD",
-  "Stripe",
-];
+import Coverpage from "./home/Coverpage.astro";
+import CoverpageMobile from "./home/CoverpageMobile.astro";
+import About from "./home/About.astro";
+import Projects from "./home/Projects.astro";
 ---
 
 <Layout title="Mesbah Mowlavi Profile">
   <AppNav />
 
-  <!-- <CoverpageMobile class="mobile-only" />
-  <Coverpage class="tabletup-only" /> -->
+  <CoverpageMobile class="mobile-only" />
+  <Coverpage class="tablet-up-flex" />
 
-  <section class="hero is-fullheight about">
-    <div class="row">
-      <div class="segment hi-there">
-        <div class="circle"></div>
-        <h3>
-          Hi there, <br />I'm <span class="serif">Mesbah</span>
-        </h3>
-        <div class="footer">Tools & Tech</div>
-      </div>
-      <div class="segment">
-        <p>
-          I’m a Computer Engineer with 5+ years of experience in software
-          development, creative thinking, and product leadership. I have a
-          strong passion for creating responsive systems and engaging interfaces
-          that help make the world a better place.
-        </p>
-        <div class="footer right">Vancouver // BC // Canada</div>
-      </div>
-    </div>
-
-    <div class="skills">
-      <div class="skills-inner">
-        <!-- {SKILLS.forEach((skill) => <div>{skill}</div>)} -->
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-        <div>Typescript</div>
-        <div>Node.js</div>
-        <div>Python</div>
-      </div>
-    </div>
-  </section>
+  <About />
+  <Projects />
 </Layout>
 
-<style lang="scss">
-  @import "../styles/theme.sass";
-  :root {
-    --blue: #57c3c3;
+<style lang="scss" is:global>
+  html {
+    scroll-snap-type: y proximity;
   }
-
-  .hero.about {
-    color: #f3efe0;
-    border-top: 1px solid $white;
-    .row {
-      flex: 1;
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-    }
-    .segment {
-      flex: 1;
-      display: grid;
-      place-items: center;
-      border-bottom: 1px solid $white;
-      position: relative;
-      p {
-        width: 70%;
-        font-size: 24px;
-      }
-      .footer {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 48px;
-        line-height: 48px;
-        padding: 0 15px;
-        font-family: $family-code;
-        font-size: 14px;
-        border-top: 1px solid $white;
-        &.right {
-          text-align: right;
-        }
-      }
-    }
-    .segment.hi-there {
-      h3 {
-        margin: 0;
-        font-weight: 500;
-        font-size: 96px;
-        line-height: 1.1;
-      }
-      .serif {
-        color: var(--blue);
-      }
-      .circle {
-        width: 35vw;
-        height: 35vw;
-        border-radius: 50%;
-        border: 1px solid $white;
-        position: absolute;
-        animation: dvd 10s linear infinite;
-
-        // TODO: dvd animation
-        @keyframes dvd {
-          0% {
-            top: 0;
-            left: 0;
-          }
-          50% {
-            top: 15vw;
-            left: 15vw;
-          }
-          100% {
-            top: 0;
-            left: 0;
-          }
-        }
-      }
-    }
-
-    .segment + .segment {
-      border-left: 1px solid $white;
-    }
-  }
-
-  .skills {
-    position: relative;
-    overflow: hidden;
-    width: 100vw;
-    height: 246px;
-    z-index: 1;
-
-    .skills-inner {
-      position: relative;
-      display: flex;
-      white-space: nowrap;
-      animation: skills_marquee 20s linear infinite;
-
-      div {
-        width: 100px;
-        line-height: 100px;
-        height: 246px;
-        writing-mode: vertical-lr;
-        text-orientation: mixed;
-        transform: rotate(180deg);
-        border: 1px solid $white;
-        margin: -1px 0 0 -1px;
-        text-align: center;
-      }
-    }
-
-    @keyframes skills_marquee {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-
-      100% {
-        transform: translate3d(calc(100px * -16), 0, 0);
-      }
-    }
-  }
-
-  .serif {
-    font-family: $family-serif;
-    font-style: italic;
-    font-weight: 500;
-  }
-
-  // TODO: make this global
-  .tabletup-only {
-    display: none;
-  }
-  @include tablet {
-    .mobile-only {
-      display: none;
-    }
-    .tabletup-only {
-      display: block;
-    }
+  .hero {
+    scroll-snap-align: start;
   }
 </style>

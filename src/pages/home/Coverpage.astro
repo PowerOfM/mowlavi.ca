@@ -6,7 +6,9 @@ export interface Props {
 const props = Astro.props;
 ---
 
-<section class={"hero is-fullheight " + props.class}>
+<section class={"hero " + props.class}>
+  <img class="selfie" src="/img/me.png" />
+
   <div class="top-line"></div>
 
   <div class="segment">Engineer</div>
@@ -28,13 +30,12 @@ const props = Astro.props;
     <div></div>
   </div>
 
-  <img class="selfie" src="/img/me.png" />
   <img class="selfie me2" src="/img/me2.png" />
 </section>
 
 <style lang="scss">
-  @import "../styles/animations.sass";
-  @import "../styles/theme.sass";
+  @import "../../styles/animations.sass";
+  @import "../../styles/theme.sass";
 
   .hero {
     $ease-in1: cubic-bezier(0.25, 0.46, 0.45, 0.94);

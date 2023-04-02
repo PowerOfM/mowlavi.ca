@@ -1,0 +1,30 @@
+<section class="hero projects">
+  <div class="header">
+    <!-- <h2 class="outline">Projects</h2>
+    <h2 class="outline">Projects</h2>
+    <h2>Projects</h2>
+    <h2 class="outline">Projects</h2>
+    <h2 class="outline">Projects</h2>
+    <h2 class="outline">Projects</h2> -->
+  </div>
+</section>
+
+<style lang="scss">
+  @import "../../styles/theme.sass";
+
+  .hero.projects {
+    background-color: $dim-blue;
+    .header {
+      display: flex;
+      gap: 20px;
+    }
+    h2 {
+      font-size: 96px;
+      font-weight: 500;
+      &.outline {
+        color: transparent;
+        -webkit-text-stroke: 1px $white;
+      }
+    }
+  }
+</style>

@@ -1,20 +1,56 @@
 @charset "utf-8"
 
+@import './reset.css'
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:ital,wght@1,500&display=swap")
 
 @import "./theme"
-
-@import "bulma/sass/elements/button"
-@import "bulma/sass/elements/container"
-@import "bulma/sass/elements/title"
-@import "bulma/sass/form/_all"
-@import "bulma/sass/components/navbar"
-@import "bulma/sass/layout/hero"
-@import "bulma/sass/layout/section"
 
 html
   scroll-behavior: smooth
 
 body
-  background: #1A1824
-  color: #F3EFE0
+  background: $dark-purple
+  color: $white
+  font-family: $family-sans-serif
+  min-width: 280px
+
+*
+  box-sizing: border-box
+
+// Breakpoint styles
+.tablet-up-flex,.tablet-up-block
+  display: none !important
+
+@include tablet
+  .mobile-only
+    display: none !important
+
+  .tablet-up-flex
+    display: flex !important
+
+  .tablet-up-block
+    display: block !important
+
+// Shared styles
+.serif
+  font-family: $family-serif
+  font-style: italic
+  font-weight: 500
+
+.label
+  font-size: 14px
+  font-family: $family-code
+  font-weight: normal
+  font-style: normal
+  color: $white
+  &.vert
+    writing-mode: vertical-lr
+    text-orientation: mixed
+    transform: rotate(180deg)
+
+.hero
+  align-items: stretch
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  min-height: 100vh
