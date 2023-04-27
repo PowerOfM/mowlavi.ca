@@ -1,11 +1,49 @@
 <section class="hero projects">
   <div class="header">
-    <!-- <h2 class="outline">Projects</h2>
-    <h2 class="outline">Projects</h2>
-    <h2>Projects</h2>
-    <h2 class="outline">Projects</h2>
-    <h2 class="outline">Projects</h2>
-    <h2 class="outline">Projects</h2> -->
+    <div class="header-inner">
+      <h2 class="outline">Projects</h2>
+      <h2 class="outline">Projects</h2>
+      <h2 class="outline">Projects</h2>
+      <h2>Projects</h2>
+      <h2 class="outline">Projects</h2>
+      <h2 class="outline">Projects</h2>
+      <h2 class="outline">Projects</h2>
+      <h2 class="outline">Projects</h2>
+      <h2 class="outline">Projects</h2>
+    </div>
+  </div>
+
+  <div class="info">
+    I have been fortunate enough to work on some exciting projects over the
+    years. Here are a selection of some of my favourites.
+  </div>
+
+  <div class="project-list">
+    <div class="project-tag label vert">SELECTED PROJECTS</div>
+    <div class="project">
+      <h4>Unify</h4>
+      <div class="subtitle">Workspace <br />Experience Platform</div>
+
+      <button>View Project &gt;</button>
+    </div>
+    <div class="project">
+      <h4>Definery</h4>
+      <div class="subtitle">Scope-of-Work <br />Database &amp; Manager</div>
+
+      <button>View Project &gt;</button>
+    </div>
+    <div class="project">
+      <h4>SwiftHire</h4>
+      <div class="subtitle">Smart Applicant <br />Tracking System</div>
+
+      <button>View Project &gt;</button>
+    </div>
+    <div class="project">
+      <h4>Scrapless</h4>
+      <div class="subtitle">Food Waste <br />Prevention App</div>
+
+      <button>View Project &gt;</button>
+    </div>
   </div>
 </section>
 
@@ -14,16 +52,72 @@
 
   .hero.projects {
     background-color: $dim-blue;
+    justify-content: flex-start;
+
     .header {
+      position: relative;
+      overflow: hidden;
+      width: 100vw;
       display: flex;
       gap: 20px;
+
+      .header-inner {
+        position: relative;
+        display: flex;
+        white-space: nowrap;
+        animation: header_marquee 40s linear infinite;
+
+        h2 {
+          width: 400px;
+          font-size: 96px;
+          font-weight: 500;
+          &.outline {
+            color: transparent;
+            -webkit-text-stroke: 1px $white;
+          }
+        }
+      }
+
+      @keyframes header_marquee {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+
+        100% {
+          transform: translate3d(calc(-4 * 400px), 0, 0);
+        }
+      }
     }
-    h2 {
-      font-size: 96px;
-      font-weight: 500;
-      &.outline {
-        color: transparent;
-        -webkit-text-stroke: 1px $white;
+
+    .info {
+      padding: 2.25rem;
+      border-top: 1px solid $white;
+      text-align: center;
+    }
+
+    .project-list {
+      border-top: 1px solid $white;
+      position: relative;
+      padding-left: 3rem;
+      .project-tag {
+        position: absolute;
+        left: 14px;
+        top: 50px;
+      }
+      .project {
+        padding: 60px 0 0 60px;
+        border-left: 1px solid $white;
+        height: 55vh;
+        h4 {
+          font-family: $family-serif;
+          font-style: italic;
+          font-weight: 500;
+          font-size: 48px;
+          line-height: 82px;
+        }
+        .subtitle {
+          font-size: 24px;
+        }
       }
     }
   }
