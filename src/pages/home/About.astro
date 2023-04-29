@@ -22,11 +22,11 @@ const SKILLS = [
   <div class="row">
     <div class="segment hi-there">
       <div class="circle"></div>
-      <h3>
+      <h2>
         Hi there, <br />I'm <span class="serif">
           Mesbah <span class="label">/məsbɑ/</span>
         </span>
-      </h3>
+      </h2>
     </div>
     <div class="segment">
       <p>
@@ -107,11 +107,12 @@ const SKILLS = [
       height: auto;
     }
 
-    h3 {
+    h2 {
       margin: 20px;
       font-weight: 500;
       font-size: 25vw;
       line-height: 1.1;
+      padding-top: 37px;
       @include tablet {
         font-size: 96px;
       }
@@ -133,6 +134,10 @@ const SKILLS = [
       position: absolute;
       animation: moveX 4s linear 0s infinite alternate,
         moveY 6.8s linear 0s infinite alternate;
+      transition: border-radius 1s;
+      &:hover {
+        border-radius: 5%;
+      }
     }
 
     @keyframes moveX {

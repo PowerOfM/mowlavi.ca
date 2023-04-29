@@ -57,9 +57,12 @@
     .header {
       position: relative;
       overflow: hidden;
-      width: 100vw;
+      width: calc(100vw - 18rem);
       display: flex;
       gap: 20px;
+      height: 12.5vh;
+      margin-left: 18rem;
+      border-left: 1px solid $white;
 
       .header-inner {
         position: relative;
@@ -68,8 +71,8 @@
         animation: header_marquee 40s linear infinite;
 
         h2 {
-          width: 400px;
-          font-size: 96px;
+          width: 540px;
+          font-size: 130px;
           font-weight: 500;
           &.outline {
             color: transparent;
@@ -84,7 +87,7 @@
         }
 
         100% {
-          transform: translate3d(calc(-4 * 400px), 0, 0);
+          transform: translate3d(calc(-4 * 540px), 0, 0);
         }
       }
     }
@@ -98,15 +101,17 @@
     .project-list {
       border-top: 1px solid $white;
       position: relative;
-      padding-left: 3rem;
+      padding-left: 3.2rem;
       .project-tag {
         position: absolute;
         left: 14px;
         top: 50px;
       }
       .project {
+        position: relative;
         padding: 60px 0 0 60px;
         border-left: 1px solid $white;
+        border-bottom: 1px solid $white;
         height: 55vh;
         h4 {
           font-family: $family-serif;
@@ -117,6 +122,20 @@
         }
         .subtitle {
           font-size: 24px;
+        }
+
+        button {
+          font-family: $family-code;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          background: rgba(26, 24, 36, 0.5);
+          border: none;
+          border-top: 1px solid #f3efe0;
+          border-left: 1px solid #f3efe0;
+          color: white;
+          padding: 1.5rem 2rem;
+          text-transform: uppercase;
         }
       }
     }

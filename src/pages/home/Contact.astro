@@ -1,0 +1,229 @@
+---
+import IconGithub from "../../components/IconGithub.astro";
+import IconLinkedin from "../../components/IconLinkedin.astro";
+import IconMail from "../../components/IconMail.astro";
+
+const MONTH_NAMES = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const d = new Date();
+const dateStr = `${MONTH_NAMES[d.getMonth()]} ${d.getFullYear()}`;
+---
+
+<div class="contact hero">
+  <div class="grid">
+    <div class="col1">
+      <div class="logo-spot"></div>
+      <div class="gradient"></div>
+    </div>
+    <div class="col2">
+      <div class="block title">
+        <h2>Let's connect</h2>
+      </div>
+      <div class="block text">
+        <p>
+          Would you like to collaborate on a project? Do you have a cool event
+          you think I might bring value to? Just want to chat about my work or
+          the industry? Send me a message or email and I'll try to get back to
+          you soon!
+        </p>
+      </div>
+      <div class="block buttons">
+        <a
+          role="button"
+          class="link-button"
+          href="https://mailhide.io/e/4D4dT3zQ"
+          target="_blank"
+          rel="noreferrer"
+          onclick="popup=window.open('https://mailhide.io/e/4D4dT3zQ','mailhidepopup','width=580,height=635'); return false;"
+        >
+          <IconMail /> @mowlavi.ca
+        </a>
+        <a
+          role="button"
+          class="link-button"
+          href="https://www.linkedin.com/in/mesbah-mowlavi/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <IconLinkedin /> @mesbah-mowlavi
+        </a>
+        <a
+          role="button"
+          class="link-button"
+          href="https://github.com/PowerOfM"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <IconGithub /> @powerofm
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="made-with">
+    Made with ♥️ in Vancouver, Canada.<br />
+    Last updated {dateStr}.
+  </div>
+  <div class="label">&copy; Mesbah Mowlavi</div>
+</div>
+
+<style lang="scss">
+  @import "../../styles/theme";
+  .contact {
+    background-color: $white;
+    border-top: 1px solid $white;
+  }
+  .grid {
+    flex: 1;
+    color: $dark-purple;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+  .col1 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .col2 {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+  }
+  .logo-spot {
+    background-color: $dark-purple;
+    width: 100%;
+    height: 57px;
+    @include tablet {
+      height: 12.5vh;
+    }
+  }
+  .gradient {
+    flex: 1;
+    background: linear-gradient(270deg, #57c3c3, #a783f2, #f28383);
+    background-size: 600% 600%;
+    min-height: 10px;
+
+    animation: gradient_animation 30s ease infinite;
+
+    @keyframes gradient_animation {
+      0% {
+        background-position: 96% 0%;
+      }
+      50% {
+        background-position: 5% 100%;
+      }
+      100% {
+        background-position: 96% 0%;
+      }
+    }
+  }
+
+  .block {
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid $dark-purple;
+    @include tablet {
+      border-left: 1px solid $dark-purple;
+    }
+  }
+  .block.title {
+    padding-bottom: 1rem;
+    @include tablet {
+      padding: 2rem 3rem;
+      height: 12.5vh;
+    }
+    h2 {
+      font-family: $family-serif;
+      font-style: italic;
+      font-size: 36px;
+      @include tablet {
+        font-size: 84px;
+        background: linear-gradient(
+          90deg,
+          #57c4c4 14.48%,
+          #a783f2 45.94%,
+          #f28383 84.75%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+    }
+  }
+
+  .block.text {
+    p {
+      max-width: 600px;
+      line-height: 1.45;
+    }
+    @include tablet {
+      padding: 4rem 3rem;
+    }
+  }
+
+  .block.buttons {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem;
+    border-bottom: none;
+    a.link-button {
+      max-width: 500px;
+      display: flex;
+      // justify-content: center;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      gap: 0.5rem;
+      border: 1px solid $dark-purple;
+      border-radius: 2rem;
+      cursor: pointer;
+      text-decoration: none;
+      background-color: $white;
+      color: $dark-purple;
+      transition: color 0.5s, background-color 0.3s;
+      &:hover {
+        background-color: $dark-purple;
+        color: $white;
+      }
+    }
+    // a:nth-child(2) {
+    //   margin-left: 10vw;
+    // }
+    // a:nth-child(3) {
+    //   margin-left: 20vw;
+    // }
+  }
+  .made-with {
+    display: flex;
+    padding: 1rem 2rem;
+    line-height: 1.65;
+    border-top: 1px solid $dark-purple;
+    border-bottom: 1px solid $dark-purple;
+    color: $dark-purple;
+    @include tablet {
+      border-left: none;
+      border-right: none;
+    }
+  }
+  .label {
+    color: $dark-purple;
+    padding: 2rem;
+    text-align: right;
+  }
+</style>
