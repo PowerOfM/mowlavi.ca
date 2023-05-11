@@ -1,14 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import AppNav from "../components/AppNav.astro";
-import Coverpage from "./home/Coverpage.astro";
-import CoverpageMobile from "./home/CoverpageMobile.astro";
-import About from "./home/About.astro";
-import Projects from "./home/Projects.astro";
-import Contact from "./home/Contact.astro";
+import Coverpage from "../components/home/Coverpage.astro";
+import CoverpageMobile from "../components/home/CoverpageMobile.astro";
+import About from "../components/home/About.astro";
+import Projects from "../components/home/Projects.astro";
+import Contact from "../components/home/Contact.astro";
 ---
 
-<Layout title="Mesbah Mowlavi Profile">
+<Layout title="Mesbah Mowlavi - Engineer, Designer, Creator">
   <AppNav />
 
   <CoverpageMobile class="mobile-only" />
@@ -33,9 +33,6 @@ import Contact from "./home/Contact.astro";
   }
 </style>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"
-></script> -->
 <script src="https://cdn.jsdelivr.net/npm/lax.js"></script>
 <script>
   window.onload = function () {
