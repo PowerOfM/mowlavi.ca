@@ -1,0 +1,170 @@
+---
+export interface Props {
+  title: string;
+  subtitle: string;
+  tileImage: string;
+  logoImage: string;
+  links: { label: string; url?: string }[];
+}
+
+const { title, subtitle, tileImage, logoImage, links } = Astro.props;
+---
+
+<div class="project" style={`background-image: url('${tileImage}');`}>
+  <div class="title-container">
+    <h4>{title}</h4>
+    <div class="subtitle">
+      <Fragment set:html={subtitle.split("\n").join("<br />")} />
+    </div>
+  </div>
+
+  <div class="logo-container">
+    <img src={logoImage} width="256px" height="256px" />
+  </div>
+
+  <div class="button-container">
+    {
+      links.map(({ label, url }) =>
+        url ? (
+          <a class="button" href={url} target="_blank" rel="norefer">
+            {label} &gt;
+          </a>
+        ) : (
+          <button class="button no-link">{label}</button>
+        )
+      )
+    }
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../styles/theme.sass";
+
+  .project {
+    position: relative;
+    padding: 1rem 0 0 1rem;
+    border-bottom: 1px solid $white;
+    background-size: 220% auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 45vh;
+    transition: background-size 0.7s;
+    @include tablet {
+      height: 65vh;
+      padding: 60px 0 0 60px;
+      background-size: 110% auto;
+      border-left: 1px solid $white;
+    }
+    &:hover {
+      background-size: 200% auto;
+      @include tablet {
+        background-size: 100% auto;
+      }
+      .title-container {
+        text-shadow: 0 1px 4px rgba(black, 0.5);
+      }
+      .logo-container {
+        opacity: 1;
+      }
+      .button-container {
+        opacity: 1;
+        pointer-events: all;
+      }
+      &::after {
+        opacity: 0.5;
+      }
+    }
+    &::after {
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $dim-blue;
+      opacity: 0.75;
+      z-index: 1;
+      transition: opacity 1s;
+    }
+  }
+
+  .logo-container {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    opacity: 0.75;
+    transition: opacity 0.5s;
+    zoom: 0.65;
+    @include tablet {
+      zoom: 1;
+      right: 2rem;
+      align-items: center;
+    }
+  }
+
+  .title-container {
+    position: absolute;
+    z-index: 3;
+    transition: text-shadow 1s;
+    h4 {
+      font-family: $family-serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 82px;
+    }
+    .subtitle {
+      font-size: 24px;
+    }
+  }
+
+  .button-container {
+    position: absolute;
+    bottom: 1rem;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+
+    @include tablet {
+      bottom: 3rem;
+      gap: 1rem;
+      flex-direction: row;
+    }
+
+    button,
+    a.button {
+      font-size: 12px;
+      font-family: $family-code;
+      background-color: rgba(26, 24, 36, 0.5);
+      border: 1px solid #f3efe0;
+      color: white;
+      padding: 1rem 1rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      &[data-coming-soon],
+      &.no-link {
+        cursor: default;
+        background-color: rgba(26, 24, 36, 0);
+        &:hover {
+          background-color: rgba(26, 24, 36, 0);
+        }
+      }
+      &:hover {
+        background-color: rgba(26, 24, 36, 0.85);
+      }
+      @include tablet {
+        padding: 1.5rem 2rem;
+      }
+    }
+  }
+</style>

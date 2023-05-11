@@ -1,4 +1,10 @@
+---
+import LogoSpot from "../../components/LogoSpot.astro";
+import ProjectTile from "../../components/ProjectTile.astro";
+---
+
 <section class="hero projects">
+  <LogoSpot />
   <div class="header">
     <div class="header-inner">
       <h2 class="outline">Projects</h2>
@@ -19,31 +25,46 @@
   </div>
 
   <div class="project-list">
-    <div class="project-tag label vert">SELECTED PROJECTS</div>
-    <div class="project">
-      <h4>Unify</h4>
-      <div class="subtitle">Workspace <br />Experience Platform</div>
+    <div class="project-tag label vert tablet-up-block">SELECTED PROJECTS</div>
 
-      <button>View Project &gt;</button>
-    </div>
-    <div class="project">
-      <h4>Definery</h4>
-      <div class="subtitle">Scope-of-Work <br />Database &amp; Manager</div>
+    <ProjectTile
+      title="Unify"
+      subtitle="Workspace \nExperience Platform"
+      tileImage="/img/projtile_unify.jpg"
+      logoImage="/img/projlogo_unify.png"
+      links={[
+        { label: "Project Homepage", url: "https://unifyworkspace.com" },
+        { label: "Case Study Coming Soon" },
+      ]}
+    />
 
-      <button>View Project &gt;</button>
-    </div>
-    <div class="project">
-      <h4>SwiftHire</h4>
-      <div class="subtitle">Smart Applicant <br />Tracking System</div>
-
-      <button>View Project &gt;</button>
-    </div>
-    <div class="project">
-      <h4>Scrapless</h4>
-      <div class="subtitle">Food Waste <br />Prevention App</div>
-
-      <button>View Project &gt;</button>
-    </div>
+    <ProjectTile
+      title="Definery"
+      subtitle="Scope-of-Work \nDatabase & Manager"
+      tileImage="/img/projtile_definery.jpg"
+      logoImage="/img/projlogo_definery.png"
+      links={[{ label: "Case Study Coming Soon" }]}
+    />
+    <ProjectTile
+      title="SwiftHire"
+      subtitle="Smart Applicant \nTracking System"
+      tileImage="/img/projtile_swifthire.jpg"
+      logoImage="/img/projlogo_swifthire.png"
+      links={[
+        {
+          label: "Project Screenshots",
+          url: "https://docs.google.com/document/d/e/2PACX-1vSZ9KYDlUwAkQLpBVqAcDDxhgYF9vX10EK3LkxBO3TMnpBqjza-l-qxr9eZg70WHEt_DPwstNQjhsJ2/pub",
+        },
+        { label: "Case Study Coming Soon" },
+      ]}
+    />
+    <ProjectTile
+      title="Scrapless"
+      subtitle="Food Waste \nPrevention App"
+      tileImage="/img/projtile_scrapless.jpg"
+      logoImage="/img/projlogo_scrapless.png"
+      links={[{ label: "Case Study Coming Soon" }]}
+    />
   </div>
 </section>
 
@@ -51,38 +72,66 @@
   @import "../../styles/theme.sass";
 
   .hero.projects {
+    position: relative;
     background-color: $dim-blue;
     justify-content: flex-start;
 
     .header {
       position: relative;
       overflow: hidden;
-      width: calc(100vw - 18rem);
+      width: 100%;
       display: flex;
+
+      border-top: 1px solid $white;
       gap: 20px;
-      height: 12.5vh;
-      margin-left: 18rem;
-      border-left: 1px solid $white;
+      height: 75px;
+      margin-top: 50px;
       align-items: center;
+
+      @include tablet {
+        width: calc(100% - 18rem);
+        border-top: none;
+        border-left: 1px solid $white;
+        margin-top: 0;
+        margin-left: 18rem;
+        height: 12.5vh;
+      }
 
       .header-inner {
         position: relative;
         display: flex;
         white-space: nowrap;
-        animation: header_marquee 40s linear infinite;
+        animation: header_marquee_mobile 40s linear infinite;
+        @include tablet {
+          animation: header_marquee_desktop 40s linear infinite;
+        }
 
         h2 {
-          width: 540px;
-          font-size: 130px;
+          width: 340px;
+          font-size: 80px;
           font-weight: 500;
           &.outline {
             color: transparent;
             -webkit-text-stroke: 1px $white;
           }
+          @include tablet {
+            width: 540px;
+            font-size: 130px;
+            font-weight: 500;
+          }
         }
       }
 
-      @keyframes header_marquee {
+      @keyframes header_marquee_mobile {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+
+        100% {
+          transform: translate3d(calc(-4 * 340px), 0, 0);
+        }
+      }
+      @keyframes header_marquee_desktop {
         0% {
           transform: translate3d(0, 0, 0);
         }
@@ -102,42 +151,13 @@
     .project-list {
       border-top: 1px solid $white;
       position: relative;
-      padding-left: 3.2rem;
+      @include tablet {
+        padding-left: 3.2rem;
+      }
       .project-tag {
         position: absolute;
         left: 14px;
         top: 50px;
-      }
-      .project {
-        position: relative;
-        padding: 60px 0 0 60px;
-        border-left: 1px solid $white;
-        border-bottom: 1px solid $white;
-        height: 55vh;
-        h4 {
-          font-family: $family-serif;
-          font-style: italic;
-          font-weight: 500;
-          font-size: 48px;
-          line-height: 82px;
-        }
-        .subtitle {
-          font-size: 24px;
-        }
-
-        button {
-          font-family: $family-code;
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          background: rgba(26, 24, 36, 0.5);
-          border: none;
-          border-top: 1px solid #f3efe0;
-          border-left: 1px solid #f3efe0;
-          color: white;
-          padding: 1.5rem 2rem;
-          text-transform: uppercase;
-        }
       }
     }
   }

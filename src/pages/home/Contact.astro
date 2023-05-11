@@ -2,6 +2,7 @@
 import IconGithub from "../../components/IconGithub.astro";
 import IconLinkedin from "../../components/IconLinkedin.astro";
 import IconMail from "../../components/IconMail.astro";
+import LogoSpot from "../../components/LogoSpot.astro";
 
 const MONTH_NAMES = [
   "January",
@@ -24,6 +25,7 @@ const dateStr = `${MONTH_NAMES[d.getMonth()]} ${d.getFullYear()}`;
 <div class="contact hero">
   <div class="grid">
     <div class="col1">
+      <LogoSpot />
       <div class="logo-spot"></div>
       <div class="gradient"></div>
     </div>
@@ -108,8 +110,16 @@ const dateStr = `${MONTH_NAMES[d.getMonth()]} ${d.getFullYear()}`;
     background-color: $dark-purple;
     width: 100%;
     height: 57px;
+    display: flex;
+    align-items: center;
+    padding-left: 3rem;
     @include tablet {
       height: 12.5vh;
+      color: rgba($white, 0.25);
+      font-size: 38px;
+      display: flex;
+      align-items: center;
+      padding-left: 3rem;
     }
   }
   .gradient {

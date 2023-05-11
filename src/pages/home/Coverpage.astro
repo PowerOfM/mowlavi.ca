@@ -1,4 +1,6 @@
 ---
+import LogoSpot from "../../components/LogoSpot.astro";
+
 export interface Props {
   class: string;
 }
@@ -6,8 +8,9 @@ export interface Props {
 const props = Astro.props;
 ---
 
-<section class={"hero " + props.class}>
-  <img class="selfie" src="/img/me.png" />
+<LogoSpot />
+<section class={"hero coverpage " + props.class}>
+  <img class="selfie lax_preset_spin:693:360" src="/img/me.png" />
 
   <div class="top-line"></div>
 
@@ -17,7 +20,7 @@ const props = Astro.props;
   <div class="segment right">Designer</div>
   <div class="gutter">USER INTERFACES // USER EXPERIENCE // BRANDING</div>
 
-  <div class="segment creator">Creator</div>
+  <div class="segment creator lax_preset_spin">Creator</div>
   <div class="gutter">ART // MUSIC // VIDEO</div>
 
   <div class="dots" role="presentation">
@@ -32,12 +35,13 @@ const props = Astro.props;
 
   <img class="selfie me2" src="/img/me2.png" />
 </section>
+<div id="coverpage-scrolltrigger"></div>
 
 <style lang="scss">
   @import "../../styles/animations.sass";
   @import "../../styles/theme.sass";
 
-  .hero {
+  .hero.coverpage {
     $ease-in1: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     $ease-in2: cubic-bezier(0.66, 0.26, 0.32, 0.95);
 
@@ -47,7 +51,7 @@ const props = Astro.props;
     overflow: hidden;
 
     .top-line {
-      width: 100vw;
+      width: 100%;
       height: 0;
       border-top: 1px solid $white;
     }

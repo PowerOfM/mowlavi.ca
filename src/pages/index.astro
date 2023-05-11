@@ -20,10 +20,41 @@ import Contact from "./home/Contact.astro";
 </Layout>
 
 <style lang="scss" is:global>
-  html {
-    scroll-snap-type: y proximity;
-  }
-  .hero {
-    scroll-snap-align: start;
+  @import "../styles/theme.sass";
+
+  @include tablet {
+    html {
+      scroll-snap-type: y proximity;
+    }
+    .hero {
+      scroll-snap-align: start;
+      scroll-padding: 5px;
+    }
   }
 </style>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"
+></script> -->
+<script src="https://cdn.jsdelivr.net/npm/lax.js"></script>
+<script>
+  window.onload = function () {
+    lax.init();
+    lax.addDriver("scrollY", () => window.scrollY);
+
+    const elSkillz = document.getElementById("skillz");
+    var animationMovement = "-screenWidth";
+    if (elSkillz) {
+      animationMovement = String(Math.round(-elSkillz.clientWidth / 2));
+    }
+
+    lax.addElements("#skillz", {
+      scrollY: {
+        translateX: [
+          ["elInY", "elOutY"],
+          [0, animationMovement],
+        ],
+      },
+    });
+  };
+</script>
